@@ -18,7 +18,7 @@ namespace 天天記帳
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form form = SingletonForm.GetInstance("記一筆");
+            Form form = SingletonForm.GetInstance("記帳本");
             Application.Run(form);
         }
     }

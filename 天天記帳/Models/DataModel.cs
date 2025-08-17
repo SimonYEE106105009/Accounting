@@ -36,12 +36,48 @@ namespace 天天記帳.Models
         {
             "電腦遊戲","手機遊戲","KTV","電影","街機遊戲","旅遊門票","模型玩具","演唱會","其他娛樂"
         };
+        public static List<String> 餐廳消費店家 = new List<String>()
+        {
+        "便利商店","餐廳","小吃店","拉麵店","速食店"
+        };
+        public static List<String> 穿著消費店家 = new List<String>()
+        {
+        "Uniqlo","GU","NET","網拍","其他"
+        };
+        public static List<String> 住宿消費店家 = new List<String>()
+        {
+        "XX背包客棧","OO大飯店","YY民宿","其他"
+        };
+        public static List<String> 交通消費店家 = new List<String>()
+        {
+        "統聯客運","國光客運","和欣客運","台中捷運","台北捷運","台鐵","高鐵","其他"
+        };
+        public static List<String> 教育消費店家 = new List<String>()
+        {
+        "XX出版社","YY出版社","ZZ出版社","文具店","教育訓練中心"
+        };
+        public static List<String> 娛樂消費店家 = new List<String>()
+        {
+        "XXKTV","OO網咖","ZZ電子遊藝場","KK活動中心","AA鏢店"
+        };
+        public static List<String> 消費對象 = new List<String>()
+        {
+        "自己","朋友","家人"
+        };
 
 
         public static Dictionary<string, List<string>> keyValuePairs = new Dictionary<string, List<string>>()
         {
             {"餐費",餐費},{"穿著",穿著},{"住宿",住宿},{"交通",交通},{"教育",教育},{"娛樂",娛樂}
 
+        };
+        public static Dictionary<string, List<string>> keyValueStore = new Dictionary<string, List<string>>()
+        {
+            {"餐費",餐廳消費店家},{"穿著",穿著消費店家},{"住宿",住宿消費店家},{"交通",交通消費店家},{"教育",教育消費店家},{"娛樂",娛樂消費店家}
+        };
+        public static Dictionary<string, List<string>> keyValueObject = new Dictionary<string, List<string>>()
+        {
+            {"餐費",消費對象},{"穿著",消費對象},{"住宿",消費對象},{"交通",消費對象},{"教育",消費對象},{"娛樂",消費對象}
         };
     }
 }

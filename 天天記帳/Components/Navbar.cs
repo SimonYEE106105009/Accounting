@@ -19,7 +19,7 @@ namespace 天天記帳.Components
         {
             InitializeComponent();
             var temp =  Assembly.GetExecutingAssembly().DefinedTypes;
-            var formName = temp.Where(x => x.Namespace== "天天記帳.Forms" ).Select(x=> x.Name).ToList();
+            var formName = temp.Where(x => x.BaseType== typeof(Form)&&x.Namespace == "天天記帳.Forms").Select(x=> x.Name).ToList();
             int Value = (flowLayoutPanel1.Width / formName.Count) - 20;
 
             for (int i = 0; i < formName.Count; i++)

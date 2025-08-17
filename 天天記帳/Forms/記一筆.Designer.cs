@@ -42,9 +42,14 @@
             this.Store_comboBox = new System.Windows.Forms.ComboBox();
             this.Remark_textBox = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.navbar1 = new 天天記帳.Components.Navbar();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.navbar1 = new 天天記帳.Components.Navbar();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -96,11 +101,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 312);
+            this.label6.Location = new System.Drawing.Point(521, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 6;
-            this.label6.Text = "備註";
+            this.label6.Text = "收據";
             // 
             // label7
             // 
@@ -171,14 +176,6 @@
             this.dateTimePicker1.TabIndex = 14;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // navbar1
-            // 
-            this.navbar1.Location = new System.Drawing.Point(165, 374);
-            this.navbar1.Name = "navbar1";
-            this.navbar1.Size = new System.Drawing.Size(466, 64);
-            this.navbar1.TabIndex = 0;
-            this.navbar1.Load += new System.EventHandler(this.navbar1_Load);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(26, 337);
@@ -199,11 +196,48 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(243, 26);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(235, 310);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.UploadImage_Click1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(523, 26);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(235, 310);
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.UploadImage_Click2);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(241, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "收據";
+            // 
+            // navbar1
+            // 
+            this.navbar1.Location = new System.Drawing.Point(219, 374);
+            this.navbar1.Name = "navbar1";
+            this.navbar1.Size = new System.Drawing.Size(466, 64);
+            this.navbar1.TabIndex = 0;
+            this.navbar1.Load += new System.EventHandler(this.navbar1_Load);
+            // 
             // 記一筆
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
@@ -214,6 +248,7 @@
             this.Controls.Add(this.Purpose_comboBox);
             this.Controls.Add(this.Number_textBox);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -224,6 +259,8 @@
             this.Name = "記一筆";
             this.Text = "記一筆";
             this.Load += new System.EventHandler(this.記一筆_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +285,8 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label8;
     }
 }

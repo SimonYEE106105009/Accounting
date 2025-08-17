@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,35 @@ namespace 天天記帳.Models
 {
     internal class RecordModel
     {
+        [DisplayName("記帳日期")]
         public string Date { get; set; }
+
+        [DisplayName("金額")]
         public string Number { get; set; }
+
+        [DisplayName("消費類型")]
         public string Type { get; set; }
+
+        [DisplayName("消費目的")]
         public string Purpose { get; set; }
+
+        [DisplayName("消費對象")]
         public string Object { get; set; }
+
+        [DisplayName("消費店家")]
         public string Store { get; set; }
+
+        [DisplayName("備註")]
         public string Remark { get; set; }
 
-        public RecordModel(string date,string number, string type, string purpose, string object1,string store,string remark) 
+        [DisplayName("收據圖片１")]
+        public string Imagepath1 {  get; set; }
+
+        [DisplayName("收據圖片２")]
+        public string Imagepath2 { get; set; }
+
+
+        public RecordModel(string date,string number, string type, string purpose, string object1,string store,string imagepath1,string imagepath2,string remark) 
         {
             Date = date;
             Number = number;
@@ -25,6 +46,13 @@ namespace 天天記帳.Models
             Object = object1;
             Store = store;
             Remark = remark;
+            Imagepath1 = imagepath1;
+            Imagepath2 = imagepath2;
+        }
+
+        public RecordModel()
+        {
+
         }
     }
 }

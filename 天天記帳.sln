@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "天天記帳", "天天記帳\天天記帳.csproj", "{9B9442BC-F7A4-4DDD-92A4-86C7627304EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "記憶體回收", "記憶體回收\記憶體回收.csproj", "{8D85DE86-A7C0-4A99-ABB4-24E2EFB1F082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9B9442BC-F7A4-4DDD-92A4-86C7627304EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B9442BC-F7A4-4DDD-92A4-86C7627304EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B9442BC-F7A4-4DDD-92A4-86C7627304EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D85DE86-A7C0-4A99-ABB4-24E2EFB1F082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D85DE86-A7C0-4A99-ABB4-24E2EFB1F082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D85DE86-A7C0-4A99-ABB4-24E2EFB1F082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D85DE86-A7C0-4A99-ABB4-24E2EFB1F082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

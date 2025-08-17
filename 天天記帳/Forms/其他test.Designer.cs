@@ -1,4 +1,9 @@
-﻿namespace 天天記帳.Forms
+﻿using System.Drawing.Imaging;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
+namespace 天天記帳.Forms
 {
     partial class 其他
     {
@@ -19,13 +24,37 @@
             }
             base.Dispose(disposing);
         }
+        public Bitmap Compress(string pictureadress)
+        {
+            Bitmap bmp1 = new Bitmap(pictureadress);
+            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+            System.Drawing.Imaging.Encoder myEncoder =
+                System.Drawing.Imaging.Encoder.Quality;
+            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 50L);
+            myEncoderParameters.Param[0] = myEncoderParameter;
+            MemoryStream ms = new MemoryStream();
+            bmp1.Save(ms, jpgEncoder, myEncoderParameters);
+            byte[] result = ms.ToArray();
+            ms.Dispose();
+            return null;
+        }
 
+        public void CompressForty(PictureBox pictureBox1)
+        {
+            Bitmap resizedImage = new Bitmap(40, 40);
+            Graphics g = Graphics.FromImage(resizedImage);
+
+            g.DrawImage(pictureBox1.Image, 0, 0, 40, 40);
+
+            resizedImage.Save("D:\\VisualStudio作業\\source\\repos\\compress picture\\picture.jpg", ImageFormat.Jpeg);
+        }
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+            /// <summary>
+            /// Required method for Designer support - do not modify
+            /// the contents of this method with the code editor.
+            /// </summary>
         private void InitializeComponent()
         {
             this.navbar1 = new 天天記帳.Components.Navbar();
