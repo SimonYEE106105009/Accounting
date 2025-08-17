@@ -74,6 +74,8 @@ namespace 天天記帳.Forms
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = datas;
             dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
+
             //會透過反射方式，取得每一個List<RecordModel> 的欄位
             //先將每一個欄位進行 DataGridViewTextboxColumn創建
             //為每一筆資料建檔，創建DataGridViewRow
@@ -211,23 +213,25 @@ namespace 天天記帳.Forms
             //HW 將編輯過後的結果回寫回去CSV進行存檔
             if (e.ColumnIndex == 1)
             {
-                datas[0].Number = dataGridView1.Rows[0].Cells[1].Value.ToString();
+                datas[e.RowIndex].Number = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             }
             else if (e.ColumnIndex == 2)
             {
-                datas[1].Type = dataGridView1.Rows[0].Cells[2].Value.ToString();
+                datas[e.RowIndex].Type = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
             else if (e.ColumnIndex == 3)
             {
-                datas[2].Purpose = dataGridView1.Rows[0].Cells[3].Value.ToString();
+                datas[e.RowIndex].Purpose = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
             else if (e.ColumnIndex == 5) 
             {
-                datas[4].Store = dataGridView1.Rows[0].Cells[5].Value.ToString();
+                datas[e.RowIndex].Store = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
             }
             Console.WriteLine(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-            datas[e.RowIndex].Number = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
+
+            Console.WriteLine(datas[e.RowIndex].Purpose);
+            Console.WriteLine(datas[e.RowIndex].Store);
 
             Console.WriteLine(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
             //HW: 把其他下拉選單連動也一起完成 (也要連動消費店家)
@@ -238,25 +242,31 @@ namespace 天天記帳.Forms
                 List<string> Purposedatas = DataModel.keyValuePairs[dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()];
                 PurposecomboBoxCell.DataSource = Purposedatas;
                 PurposecomboBoxCell.Value = Purposedatas[0];
+                datas[e.RowIndex].Purpose = Purposedatas[0];
 
                 //連動消費店家
                 DataGridViewComboBoxCell StorecomboBoxCell = (DataGridViewComboBoxCell)dataGridView1.Rows[e.RowIndex].Cells[5]; //第五個位子
                 List<string> Storedatas = DataModel.keyValueStore[dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()];
                 StorecomboBoxCell.DataSource = Storedatas;
                 StorecomboBoxCell.Value = Storedatas[0];
+                datas[e.RowIndex].Store = Storedatas[0];
             }
 
-            RecordModel deletedata = datas[e.RowIndex];
-            datas.Remove(deletedata);
-            List<RecordModel> filterdates = datas.Where<RecordModel>(x => x.Date == deletedata.Date).ToList();
-            File.Delete("D:\\VisualStudio作業\\source\\repos\\天天記帳\\天天記帳\\記帳資料\\" + deletedata.Date + "\\data.csv");
-            CSV csv = new CSV();
 
-            csv.WriterList("D:\\VisualStudio作業\\source\\repos\\天天記帳\\天天記帳\\記帳資料\\" + deletedata.Date + "\\data.csv", filterdates);
+            this.BeginInvoke((MethodInvoker)(() => {
+                dataGridView1.CellEndEdit -= dataGridView1_CellEndEdit;
+                dataGridView1.DataSource = null;
+                RecordModel deletedata = datas[e.RowIndex];
+                List<RecordModel> filterdates = datas.Where<RecordModel>(x => x.Date == deletedata.Date).ToList();
+                File.Delete("D:\\VisualStudio作業\\source\\repos\\天天記帳\\天天記帳\\記帳資料\\" + deletedata.Date + "\\data.csv");
+                CSV csv = new CSV();
+
+                csv.WriterList("D:\\VisualStudio作業\\source\\repos\\天天記帳\\天天記帳\\記帳資料\\" + deletedata.Date + "\\data.csv", filterdates);
 
 
-            dataGridView1.DataSource = null;
-            LoadDatas();
+                LoadDatas();
+            }));
+           
 
         }
     }
